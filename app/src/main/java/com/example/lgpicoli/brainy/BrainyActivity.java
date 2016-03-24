@@ -12,8 +12,6 @@ import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 
-import java.util.Random;
-
 /**
  * Created by lgpicoli on 3/23/16.
  */
@@ -52,14 +50,14 @@ public class BrainyActivity extends View {
 
         canvas.drawRect(rect, blackRectPaintBrush);
 
-        Paint whitePaintbrushFill = new Paint();
-            whitePaintbrushFill.setColor(Color.WHITE);
-        whitePaintbrushFill.setStyle(Paint.Style.FILL);
+        Bitmap sourceBm = BitmapFactory.decodeResource(getResources(), R.drawable.brain5);
+        drawBitmap(canvas, sourceBm, 50, screenHeight/2);
 
-        canvas.drawCircle(screenWidth/2, screenHeight/2, 100, whitePaintbrushFill);
+        Bitmap sourceBm2 = BitmapFactory.decodeResource(getResources(), R.drawable.brain12);
+        drawBitmap(canvas, sourceBm2, screenWidth/2, screenHeight/2);
+    }
 
-        Bitmap sourceBm = BitmapFactory.decodeResource(getResources(), R.mipmap.brainies);
-        brainyBm = Bitmap.createBitmap(sourceBm, 100, 100, 100, 100);
-        canvas.drawBitmap(brainyBm, 100, 100, null);
+    private void drawBitmap(Canvas canvas, Bitmap bitmap, int x, int y) {
+        canvas.drawBitmap(bitmap, x - bitmap.getWidth()/2, y - bitmap.getHeight()/2, null);
     }
 }
